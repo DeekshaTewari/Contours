@@ -1,0 +1,110 @@
+@bias/private/EyesTargetToBias.m:                       b.indexes = [b.indexes obj.ulsequence.contour(i) obj.ulsequence.control(i)];
+@bias/private/EyesTargetToBias.m:                       b.indexes = [b.indexes obj.ulsequence.contour(i)];
+@bias/private/EyesTargetToBias.m:                       b.indexes = [b.indexes [obj.ulsequence.catchcontour; obj.ulsequence.catchcontrol]];
+@bias/private/EyesTargetToBias.m:                       b.indexes = [b.indexes obj.ulsequence.catchcontour];
+@contourspsth/private/getContoursPSTH.m:        ind{i} = et.ulsequence.contour(i);
+@contourspsth/private/getContoursPSTH.m:ind{i2} = et.ulsequence.control(1);
+@contourspsth/private/getContoursPSTH.m:        ind{catch1} = et.ulsequence.catchcontour;
+@eyestarget/plotEyeJitter.m:                    tind = et.sesinfo.ulsequence.contour(i);
+@eyestarget/plotEyeJitter.m:            tind = et.sesinfo.ulsequence.control(1);
+@eyestarget/plotEyeJitter.m:            ctrials = [ctrials; et.sesinfo.ulsequence.contour(i)];
+@eyestarget/plotEyeJitter.m:    ctrials = [ctrials; et.sesinfo.ulsequence.control(1)];
+@eyestarget/plotSalienceSpikes.m:               ind{i} = et.sesinfo.ulsequence.contour(i);
+@eyestarget/plotSalienceSpikes.m:       ind{i2} = et.sesinfo.ulsequence.control(1);
+@eyestarget/plotSalienceSpikes.m:               ind{catch1} = et.sesinfo.ulsequence.catchcontour;
+@eyestarget/plotSalienceSpikes.m:                       ind{i} = setdiff(et.sesinfo.ulsequence.contour(i),excludedTrials);
+@eyestarget/plotSalienceSpikes.m:                       ind{i} = setdiff(et.sesinfo.ulsequence.control(i),excludedTrials);
+@eyestarget/plotSalienceSpikes.m:                       ind{i} = setdiff(et.sesinfo.ulsequence.contour(i),excludedTrials);
+@eyestarget/plotSalienceSpikes.m:               ind{i2} = setdiff(et.sesinfo.ulsequence.control(1),excludedTrials);
+@eyestarget/plotSalienceSpikes.m:                       ind{catch1} = setdiff(et.sesinfo.ulsequence.catchcontour,excludedTrials);
+@eyestarget/subsasgn.m:         s(1).subs = 'ulsequence';
+@eyestarget/subsasgn.m:         s(1).subs = 'ulsequence';
+@eyestarget/subsasgn.m:         s(1).subs = 'ulsequence';
+@eyestarget/subsasgn.m:         s(1).subs = 'ulsequence';
+@eyestarget/subsasgn.m:         s(1).subs = 'ulsequence';
+@eyestarget/subsasgn.m:         s(1).subs = 'ulsequence';
+@eyestarget/subsasgn.m:         s(1).subs = 'ulsequence';
+@eyestarget/subsasgn.m:         s(1).subs = 'ulsequence';
+@eyestarget/subsref.m:          s(1).subs = 'ulsequence';
+@eyestarget/subsref.m:          s(1).subs = 'ulsequence';
+@eyestarget/subsref.m:          s(1).subs = 'ulsequence';
+@eyestarget/subsref.m:          s(1).subs = 'ulsequence';
+@eyestarget/subsref.m:          s(1).subs = 'ulsequence';
+@eyestarget/subsref.m:          s(1).subs = 'ulsequence';
+@eyestarget/subsref.m:          s(1).subs = 'ulsequence';
+@eyestarget/subsref.m:          s(1).subs = 'ulsequence';
+@sesinfo/displayfields.m:fprintf('\t\tulsequence()\n');
+@sesinfo/displayfields.m:fprintf('\t\tulsequence.contour().stimulus().repetition()\n');
+@sesinfo/displayfields.m:fprintf('\t\tulsequence.control().stimulus().repetition()\n');
+@sesinfo/displayfields.m:fprintf('\t\tulsequence.catchcontour.stimulus().repetition()\n');
+@sesinfo/displayfields.m:fprintf('\t\tulsequence.catchcontrol.stimulus().repetition()\n');
+@sesinfo/private/ounleave.m:            sesinfo.data.sequence.contour(i).stimulus(j).repetition(1) = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleave.m:            sesinfo.data.sequence.control(i).stimulus(j).repetition(1) = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleave.m:            sesinfo.data.sequence.catchcontour.stimulus(j).repetition(1) = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleave.m:            sesinfo.data.sequence.catchcontrol.stimulus(j).repetition(1) = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleave.m:                    sesinfo.data.sequence.tuning(i).stimulus(j).repetition(1) = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleave1.m:                           = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleave1.m:                           = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleave1.m:                           = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleave1.m:                           = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleave1.m:                                   = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleavePsych.m:                       sesinfo.data.sequence.contour(i).stimulus(j).repetition(k) = sesinfo.data.ulsequence(index);
+@sesinfo/private/ounleavePsych.m:                       sesinfo.data.sequence.catchcontour.stimulus(j).repetition(k) = sesinfo.data.ulsequence(index);
+@sesinfo/private/ReadIniSequence.m:             stim_info.data.ulsequence = seq;
+@sesinfo/private/ReadIniSequence.m:             stim_info.data.ulsequence = seq;
+@sesinfo/private/ReadIniSequence.m~:            stim_info.data.ulsequence = seq;
+@sesinfo/private/ReadIniSequence.m~:            stim_info.data.ulsequence = seq;
+@sesinfo/private/unleave1.m~:                           = sesinfo.data.ulsequence(index);
+@sesinfo/private/unleave1.m~:                           = sesinfo.data.ulsequence(index);
+@sesinfo/private/unleave1.m~:                           = sesinfo.data.ulsequence(index);
+@sesinfo/private/unleave1.m~:                           = sesinfo.data.ulsequence(index);
+@sesinfo/private/unleave1.m~:                                   = sesinfo.data.ulsequence(index);
+@sesinfo/sesinfo.m:%      S.ulsequence() - contains the 1-indexed trial number in which
+@sesinfo/sesinfo.m:%      S.sequence() - contains the ulsequence broken up into the
+@sesinfo/subsref.m:    case 'ulsequence'
+@sesinfo/subsref.m:             b = obj.data.ulsequence;
+@sesinfo/subsref.m:            b = obj.data.ulsequence(index(2).subs{:});
+@sesinfo/subsref.m:                             % e.g. m.ulsequence.contour - return all contour 
+@sesinfo/subsref.m:                             b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                                             % e.g. m.ulsequence.contour(1) - return all 
+@sesinfo/subsref.m:                                                     b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                             % e.g. m.ulsequence.contour(2).stimulus(3) - return 
+@sesinfo/subsref.m:                                                     b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                             % e.g. m.ulsequence.contour(2).stimulus(3).repetition(2) 
+@sesinfo/subsref.m:                                                     b = obj.data.ulsequence(tstart);
+@sesinfo/subsref.m:                                             % e.g. m.ulsequence.control - return all control
+@sesinfo/subsref.m:                                             b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                                                     % e.g. m.ulsequence.control(1) - return all 
+@sesinfo/subsref.m:                                                            b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                                                     % e.g. m.ulsequence.control(2).stimulus(3) - return 
+@sesinfo/subsref.m:                                                            b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                                                     % e.g. m.ulsequence.contour(2).stimulus(3).repetition(2) 
+@sesinfo/subsref.m:                                                            b = obj.data.ulsequence(tstart);
+@sesinfo/subsref.m:                                             % e.g. m.ulsequence.catchcontour - return all 
+@sesinfo/subsref.m:                                             b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                                             % e.g. m.ulsequence.catchcontour.stimulus(2) - return all 
+@sesinfo/subsref.m:                                                            b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                                                            b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                                             % e.g. m.ulsequence.catchcontour.stimulus(3).repetition(2) - return 
+@sesinfo/subsref.m:                                                            b = obj.data.ulsequence(tstart);
+@sesinfo/subsref.m:                                                            b = obj.data.ulsequence(tstart);
+@sesinfo/subsref.m:                                             % e.g. m.ulsequence.catchcontrol - return all 
+@sesinfo/subsref.m:                                             b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                                             % e.g. m.ulsequence.catchcontrol.stimulus(2) - return all 
+@sesinfo/subsref.m:                                                            b = obj.data.ulsequence(tstart:tend);
+@sesinfo/subsref.m:                                             % e.g. m.ulsequence.catchcontrol.stimulus(3).repetition(2) - return 
+@sesinfo/subsref.m:                                                            b = obj.data.ulsequence(tstart);
+ShihChengChangeLog.txt:@sesinfo/sesinfo: Added isequence and ulsequence.
+ShihChengChangeLog.txt:@sesinfo/display: Added ulsequence field.
+ShihChengChangeLog.txt:@sesinfo/ReadIniSequence: Added ulsequence and added comments about
+ShihChengChangeLog.txt:@sesinfo/private/unleave: Now uses ulsequence instead of isequence.
+ShihChengChangeLog.txt:@sesinfo/private/unleave1: Now uses ulsequence instead of isequence.
+ShihChengChangeLog.txt:@sesinfo/private/unleavePsych: Now uses ulsequence instead of isequence.
+ShihChengChangeLog.txt:@sesinfo/subsref: Added code to access ulsequence.
+ShihChengChangeLog.txt:@sesinfo/sesinfo.m: Added comments to describe isequence, ulsequence,
+labdemo.m:trials1 = et.ulsequence.contour(1);
+labdemo.m:ctrials = et.ulsequence.control(1);
+labdemo.m:tctrials = [et.ulsequence.contour; ctrials];
+salienceSpikes.m:ind1 = et.ulsequence.control(1);
+salienceSpikes.m:ind2 = et.ulsequence.control(2);
+salienceSpikes.m:ind3 = et.ulsequence.control(3);

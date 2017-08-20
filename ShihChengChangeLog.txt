@@ -1,0 +1,1511 @@
+September 20, 2001
+ContoursPlotUnleavedSpikes: Changed if statements to compare target 
+	string directly instead of setting a flag.
+ContoursNeuCalPSTH: New function.
+
+September 24, 2001
+ContoursNeuCalPSTH: Uses duration field in newly modified unleaved 
+	spikes structure to set up timebins for histogram. Timebins	are also
+	saved for use by ContoursNeuPlotPSTH.
+ContoursNeuPlotPSTH: New function. Plots PSTH according to salience 
+	conditions.	Uses same format as ContoursPlotUnleavedSpikes.
+ContoursUnleaveSpikes: Added duration to unleaved spikes structure to 
+	make it easy for ContoursNeuCalPSTH to compute max duration.
+
+October 17, 2001
+Contents: Fixed typo in ContoursPlotResult.
+ContoursUnleaveSpikes: Fixed omissions in help comments.
+ContoursUnleaveSignals: New function.
+ContoursPlotUnleavedSignals: New function.
+ContoursNeuPlotPSTH: Moved axis adjustment out of the if loop since it 
+	is common to both conditions.
+
+October 19, 2001
+ContoursReadIniFile: Consolidated return arguments into SESINFO. 
+ContoursUnleaveSequence: Updated to use SESINFO.
+ContoursUnleaveSignals: Updated to use SESINFO and also now takes the
+	signal name as an argument.
+
+October 23, 2001
+ContoursUnleaveSpikes: Updated to use SESINFO.
+
+October 24, 2001
+ContoursUnleaveMarkers: Updated to use SESINFO.
+ContoursPlotUnleavedSignals: Changed catch argument to argcatch to
+	prevent conflict with builtin catch argument.
+ContoursPlotUnleavedMarkers: Added argcatch argument and code to plot 
+	markers from catch trials.
+
+October 25, 2001
+ContoursPlotUnleavedSpikes: Updated help comments. Fixed bug in
+	determining salience steps and repetitions. Added 'allcatch'
+	argument to plot all catch trials.
+ContoursPlotResultSpikes: New function.
+ContoursNeuCalPSTH: Added allcatch field in structure.
+ContoursNeuPlotPSTH: Added 'allcatch' as argument which will plot all
+	catch trials instead of subdividing into locations.
+ContoursBehGetResults: Updated to use SESINFO. 
+
+October 26, 2001
+ContoursPlotUnleavedSpikes: Now plots dividing line before plotting 
+	allcatch trials. Updated so this function can be used to plot 
+	unleaved spikes as well as result spikes. 
+ContoursNeuPlotPSTH: Reverse plot orders so it matches raster plots. 
+	Renamed to ContoursPlotPSTH.
+ContoursNeuCalPSTH: Renamed to ContoursCalPSTH.
+ContoursGetResultSpikes: New function to sort unleaved spikes into 
+	correct and incorrect trials.
+ContoursPlotResultSpikes: Function replaced by ContoursGetResultSpikes 
+	and ContoursPlotUnleavedSpikes.
+					
+October 28, 2001
+ContoursPlotUnleavedMarkers: Renamed to ContoursPlotMarkers.
+ContoursPlotUnleavedSpikes: Renamed to ContoursPlotSpikes.
+ContoursPlotUnleavedSignals: Renamed to ContoursPlotSignals.
+ContoursGetSessionInfo: Updated to get min duration using the updated
+	nptReadSorterHdr.
+				
+October 29, 2001
+ContoursPlotSignals: Fixed bug with saliencesteps. Updated to use 
+	'allcatch' argument. Now will check for reps before plotting so as 
+	to be compatible with all signals or results signals. Added	check for
+	allcatch field to plot signals for all catch trials together.
+ContoursGetResultSignals: New function. Added allcatch field to group the
+	signals for all the catch trials together. Added sampling_rate to the 
+	data structure.
+ContoursUnleaveSignals: Added sampling_rate argument to allow for 
+	subsampled data to be processed properly. Added sampling_rate to the 
+	data structure.
+ContoursGetResultSpikes: Added allcatch field to store spikes from all 
+	catch trials regardless of the result of the trial.
+ContoursPlotSpikes: Added check for allcatch field to see if we are 
+	plotting spikes or results spikes. Now plots all catch trials 
+	regardless or result if 'allcatch' argument is used.
+ContoursCalPSTH: Now checks for existence of allcatch field and computes 
+	psth for all the catch trials.
+ContoursAverageSignals: New function to average signals for all salience 
+	conditions. Uses similar data structure to signals so we can use 
+	ContoursPlotSignals to look at the data.
+ContoursGetResultMarkers: New function to arrange markers according to 
+	result of the trial.
+ContoursPlotMarkers: Added 'allcatch' argument. Now uses reps in data 
+	structure so we can use this function to plot markers and result 
+	markers. Removed clf to allow more flexible plotting.
+				
+October 30, 2001
+ContoursCombineSpikes: New function to combine spikes from multiple 
+	sessions. (Incomplete).
+ContoursInspectEyes: New function to inspect eye movements.
+ContoursPlotSpikes: Removed clf call to allow for more flexible plotting.
+ContoursUnleaveSequence: Updated to use SESINFO.
+ContoursGetResultSequence: New function to return sequence sorted by 
+	result of the trial and salience conditions.
+ContoursExtractSpikeTimes: Extract the times of the first spike after a 
+	specified latency.
+ContoursExtractEyeData: Extract the eye position for a range of times.
+
+November 1, 2001
+ContoursPlotPSTH: Removed clf to allow more flexible plotting.
+ContoursPlotSignals: Removed clf to allow more flexible plotting.
+ContoursCalOriTuning: New function to calculate orientation tuning 
+	functions.
+
+November 8, 2001
+ContoursGetResultSpikes: Now checks for catch trials before trying to
+	access catch trial data.
+ContoursGetResultSignals: Now checks for catch trials before trying to
+	access catch trial data.
+ContoursAverageSignals: Now checks for catch trials before trying to
+	access catch trial data.
+ContoursGetResultMarkers: Now checks for catch trials before trying to
+	access catch trial data.
+
+January 29, 2002
+@sesinfo: New class that reads INI file and instantiates SESINFO object.
+@sesinfo/sesinfo: Constructor function for SESINFO object.
+@sesinfo/display: Display method for SESINFO object.
+@sesinfo/subsref: Indexing method for SESINFO object.
+@sesinfo/private/ContoursReadIniFile: Function that is now a private
+	function since this is used only by the constructor function.
+@markers: New class that reads MRK file and instantiates MARKERS object.
+@markers/markers: Constructor function for unleaved MARKERS object.
+@markers/display: Display method for MARKERS object.
+@markers/plot: Used to be ContoursPlotMarkers. Now draws lines between
+	stimulus conditions and modifies the tick marks accordingly.
+@markers/private/unleave: Used to be ContoursUnleaveMarkers. Now uses 
+	SESINFO object to get sequence.
+@markers/private/ContoursReadMarkerFile: Function is now private since
+	it is used only by the constructor.
+@markers/private/ContoursMarkersToTrials: Function is now private since
+	it is used only by the constructor.
+	
+January 30, 2002
+@sesinfo/sesinfo: Added help comments. Changed call to 
+	ContoursReadIniFile to ReadIniFile.
+@sesinfo/private/ReadIniFile: Renamed from ContoursReadIniFile.
+@markers/markers: Changed call to ContoursReadMarkerFile to 
+	ReadMarkerFile and ContoursMarkersToTrials to MarkersToTrials. Added
+	session field.
+@markers/private/ReadMarkerFile: Renamed from ContoursReadMarkerFile.
+@markers/private/MarkerToTrials: Renamed from ContoursMarkersToTrials.
+@markers/subsref: New method to index data in MARKERS object. Added 
+	access to session field.
+@markers/display: Added session field.
+@performance: New class that computes and store the mean and sd for 
+	different stimulus conditions.
+@performance/performance: Constructor function for PERFORMANCE object.
+@performance/display: Display function for PERFORMANCE object.
+@performance/subsref: Indexing method for PERFORMANCE object.
+
+January 31, 2002
+@sesinfo/subsref: Added access to stim_p field.
+@sesinfo/diff: New function to list differences between SESINFO objects.
+@performance/plus: New function to combine PERFORMANCE objects.
+@performance/private/MarkersToPerformance: Moved calculation of 
+	population statistics to ComputeMeanStdev function.
+@performance/private/ComputeMeanStdev: New private function to compute 
+	population statistics which can be called by other functions like 
+	plus.
+
+February 4, 2002
+@performance/plot: New function to plot performance curves.
+Contents: Updated to list new classes and functions.
+
+February 6, 2002
+@sesinfo/private/ReadIniFile: Renamed sequence field to isequence.
+@sesinfo/sesinfo: Added call to unleave function. This way unleave is 
+	only done in one function instead of being scattered throughout.
+@sesinfo/private/unleave: New function that unleaves the trial sequence 
+	and stores it in the sequence field.
+@sesinfo/display: Updated to indicate new sequence access.
+@sesinfo/subsref: Updated to return trial number given salience condition
+	and repetition number.
+
+February 7, 2002
+@performance/plot: Added hold off at the end of the function.
+@sesinfo/ReadIniFile: Fixed typo in transient field.
+@sesinfo/diff: Changed display calls to fprintf to improve formatting.
+
+March 4, 2002
+@sesinfo/private/ReadIniFile: Now calls ReadIniGabor, ReadIniTiming, and 
+	ReadIniSequence	to read the appropriate sections. Also passes empty
+	string to the these functions so that the right structure is returned 
+	in the case when the null constructor is called.
+@sesinfo/private/ReadIniGabor: Now checks version information to figure 
+	out	what needs to be read in. Added some reordering in order to keep 
+	the field order the same for different versions. Also returns empty 
+	data structure when -1 is passed as the fid.
+@sesinfo/private/ReadIniTiming: Now checks version information to figure 
+	out	what needs to be read in. Added some reordering in order to keep 
+	the field order the same for different versions. Also returns empty 
+	data structure when -1 is passed as the fid.
+@sesinfo/private/ReadIniSequence: Now checks version information to 
+	figure out what needs to be read in. Depending on the verion, 
+	different unleave functions are called. Also, if contourtype is not 
+	interpolated i.e. probably a psychophysical session, unleavePsych is 
+	called. Also returns empty data structure when -1 is passed as the 
+	fid.
+@sesinfo/private/unleave: Updated to new object structure that supports
+	stimulus repetitions, which means that repetition is now a member of 
+	stimlus, which is a member of contour/control/catchcontour/catchcontrol.
+	Also unleaves tuning stimuli if present.
+@sesinfo/private/unleave1: New function to read and unleave stimulus 
+	sequence version 1.
+@sesinfo/private/unleavePsych: New function to read and unleave stimulus
+	sequence for non-interpolated contours, i.e. probably for 
+	psychophysics.
+@sesinfo/sesinfo: Now calls ReadIniFile to read and unleave stimulus. 
+	Also passes empty string to ReadIniFile when the null constructor is 
+	called.
+@sesinfo/subsref: Updated to handle new data structure.
+@sesinfo/diff: Updated to handle new data structure.
+@sesinfo/display: Updated to handle new data structure.
+@markers/subsref: Updated handle new sesinfo structure. Removed need to 
+	reference catchcontour/catchcontrol with salience value of 1.
+@markers/plot: Updated to handle new sesinfo structure.
+@markers/private/unleave: Updated to handle new sesinfo structure.
+@performance/private/MarkersToPerformance: Updated to handle new sesinfo 
+	structure.
+
+March 12, 2002
+@sesinfo/private/ReadIniFile: Added presenterversion field to sesinfo as 
+	well as code to read the field from INI file.
+@sesinfo/display: Added presenterversion.
+@sesinfo/subsref: Added presenterversion.
+@sesinfo/diff: Added presenterversion.
+
+March 15, 2002
+@markers/plot: Added code to check for presence of control trials so
+	we can use with psychophysical sessions.
+@markers/private/unleave: Added code to check for presence of control 
+	trials so we can use with psychophysical sessions.
+@performance/performance: Modified structure to allow storage of multiple
+	sessions. 
+@performance/private/MarkersToPerformance: Updated to new structure with
+	multiple sessions. Now totals results before calling 
+	ComputeMeanStdev. Now checks for control trials so we can use with 
+	psychophysical sessions.
+@performance/private/ComputeMeanStdev: Updated to new structure with
+	multiple sessions. Now just computes mean and stdev. Also checks for 
+	control trials so we can use with psychophysical sessions.
+@performance/display: Updated for new data structure.
+@performance/plot: Added code to check for presence of control trials so 
+	we can use with psychophysical sessions. Added code to adjust the 
+	axis so that the plot is centered on the graph.
+@performance/plus: Added code to check for presence of control trials so 
+	we can use with psychophysical sessions. Also totals up results 
+	before calling ComputeMeanStdev. Removed addition of daysessions 
+	field.
+@performance/subsref: Modified code to be more efficient and readable.
+@sesinfo/subsref: Modified code to be more efficient and readable.
+
+April 25, 2002
+ContoursCheckPresenterTiming: New function to scan and extract problems
+	identified in the syncs and scanlines files.
+
+August 5, 2002
+@sesinfo/private/ReadIniGabor: Now checks entries representing checkboxes
+	and sets any disabled entries controlled by checkboxes to default values.
+@sesinfo/private/unleavePsych: Added code to handle repeats.
+
+August 16, 2002
+@markers/plot: Fixed bug in getting repetition value in control section
+	of the code. Added code to generate appropriate legend.
+@performance/plot: Added code to generate legend when plotting results 
+	from neural sessions.
+
+August 27, 2002
+@sesinfo/private/ReadIniFile: Changed .INI to .ini to work better with 
+	unix. We have tolower script that converts uppercase names to lowercase
+	so everything should be lowercase.
+
+October 6, 2002
+@sesinfo/ReadIniSequence: Put sequence found in INI file into isequence for
+	use by view functions in NPT.
+@sesinfo/subsref: Added function to access isequence field. Changed 'session'
+	field to 'sessionname'.
+@sesinfo/display: Changed 'session' to 'sessionname' and added 'isequence'.
+@eyestarget/eyestarget: New class to inspect eye traces along with target 
+	locations.
+@eyestarget/display: New function.
+@eyestarget/plot: New function.
+@eyestarget/subsref: New function.
+@eyetarget/private/GetTargetLocation: Function to read target location 
+	from stimulus file.
+
+October 9, 2002
+GetTargetLocation: Added comments.
+
+October 13, 2002
+ContoursPresenterTiming: Renamed from ContoursCheckPresenterTiming. Removed
+	session name argument. Now gets session name from the files in the 
+	current directory.
+@sesinfo/sesinfo: Removed session name argument. Now gets the session name
+	from files in the current directory.
+@eyestarget/eyestarget: Updated comments.
+
+October 15, 2002
+@eyestarget/eyestarget: Now loads timing.mat as well to get stimulus onsets.
+@eyestarget/plot: Modified title to get rid of subscripting problem. Now 
+	includes analysis of eye positions.
+
+October 16, 2002
+ContoursTrialResultTiming: New function that computes outcome of trial
+	as well as timing events.
+@eyestarget/plot: Now calls ContoursTrialResult and prints output from
+	the function to the command window.
+@sesinfo/sesinfo: Replaced strfind command with findstr since strfind 
+	does not exist in Matlab 5.3.
+ContoursSessionsDiff: New function to compare sessions on CDs.
+
+October 17, 2002
+isEyeCal: New function to check to see if ini file in current directory
+	is an eye calibration session. Uses system('grep ...') so will only
+	work on UNIX right now.
+ContoursSessionsDiff: Modified to use isEyeCal. Run from /Volumes 
+	directory which means it might only run in OS X, but might run fine
+	on other UNIX as well.
+
+October 18, 2002
+@sesinfo/private/ReadIniFile: Modified to take filename instead of 
+	appending suffix in the function. This will allow analysis of 
+	INI files that did not have their names changed to lowercase.
+
+October 19, 2002
+@sesinfo/sesinfo: Fixed bug that failed to pass full filename to 
+	ReadIniFile.
+
+October 21, 2002
+ContoursMoveEyesFiles: Move files in Eyes directory session by session
+	when the number of files in the Eyes directory exceeds limits of mv.
+
+October 23,2002
+ContoursCopyDescriptors: New function to copy descriptor files to
+	days without descriptor files.
+
+October 24, 2002
+@eyestarget/subsref: Now passes unknown fields to parent object.
+
+October 25, 2002
+@eyestarget/eyestarget: Turned off holdaxis property in nptdata parent 
+	object.
+isEyeCal: Added optional arguments in case ini suffix is not lowercase.
+ContoursSessionsDiff: Added code to handle old data hierarchy. Also calls
+	isEyeCal now with filename of ini file.
+
+October 28, 2002
+ContoursMoveEyesFiles: Added day string to move command so files that
+	don't have a period immediately following the session numbers will
+	be moved as well.
+
+October 29, 2002
+ContoursCopyDescriptors: Modified to take list of directories to work on.
+
+October 30, 2002
+ContoursRenameSession: New function to rename files from disco080202 which
+	had an extra 0 in the session name: disco080202001, etc. 
+
+October 31, 2002
+@sesinfo/sesinfo: Added 'CaseInsensitive' to nptDir call.
+@eyestarget/eyestarget: Fixed bug that failed to instantiate eyes object
+	using 'pixels' as units.
+
+November 14, 2002
+@sesinfo/private/ReadIniTiming.m: Fixed order of fixlimit field when
+	ini_fid == -1.
+@sesinfo/sesinfo: Now uses grep to make sure INI file is for a
+	Gabor session.
+@eyestarget/ProcessSession: New method for batch processing whole 
+	session.
+@eyestarget/ProcessTrial: New method called by ProcessSession to
+	return data for each trial.
+
+December 4, 2002
+ContoursReadTargetLocations: New function that reads all target 
+	locations from stimuli file.
+
+January 27, 2003
+@eyestarget/eyestarget: Modified to use ContoursReadTargetLocations.
+@eyestarget/display: Modified to show correct fields.
+@eyestarget/plot: Modified to use targets returned by 
+	ContoursReadTargetLocations.
+@sesinfo/sesinfo: Modified grep call to use -s to suppress error
+	about directories.
+@markers/private: Deleted ReadMarkerFiles and MarkersToTrials. Will
+	now use npt/scripts/read_files/ReadMarkerFiles and 
+	Contours/ContoursMarkersToTrials, which are more generally 
+	accessible.
+@markers/markers: Modified to use ReadMarkerFiles and
+	ContoursMarkersToTrials.
+ContoursMarkersToTrials: Fixed bug in signal numbers in case 
+	statements. Now stores time of correct or incorrect marker as well.
+@eyestarget/ProcessTrial: Modified to use targets returned by 
+	ContoursReadTargetLocations.
+
+January 28, 2003
+@eyestarget/ProcessTrial: Fixed bug that used et instead of obj as name
+	of object. Now also returns markers as part of data. 
+
+January 30, 2003
+@sesinfo/sesinfo: Added isequence and ulsequence.
+@sesinfo/display: Added ulsequence field.
+@sesinfo/ReadIniSequence: Added ulsequence and added comments about
+	stim_info.sequence being filled by unleave functions.
+@sesinfo/private/unleave: Now uses ulsequence instead of isequence.
+@sesinfo/private/unleave1: Now uses ulsequence instead of isequence.
+@sesinfo/private/unleavePsych: Now uses ulsequence instead of isequence.
+@sesinfo/subsref: Added code to access ulsequence.
+
+February 3, 2003
+@eyestarget/eyestarget: Added code to check for batch argument.
+	New fields added and initialized by default. Targets field is now 
+	unleaved.
+@eyestarget/ProcessTrial: Added code to store calculated values in
+	object. Now returns object as well as calculated values. Now uses
+	unleaved targets field.
+@eyestarget/ProcessAllTrials: New function to compute data for all
+	trials. Visual feedback while in loop added.
+@eyestarget/ProcessSession: Modified to accomodate changes in
+	return types in ProcessTrial.
+@eyestarget/display: New fields added.
+@eyestarget/subsref: Modified to support new fields. Now returns 
+	error status to allow support for passing subsref to parent
+	objects when multiple inheritance is involved.
+@eyestarget/plot: Now uses unleaved targets field.
+@eyestarget/display: Function removed.
+@eyestarget/displayfields: New overloaded function that displays
+	fields from parent objects in addition to those created in this
+	object.
+@sesinfo/sesinfo: Changed name of session field in comment to 
+	sessionname.
+@sesinfo/private/ReadIniFile: Changed name of session field to
+	sessionname to be consistent with nptdata.
+@sesinfo/subsref: Now returns error status when called by other
+	functions and prints error only when called directly to support
+	multiple inheritance. Field name changed from session to 
+	sessionname.
+@sesinfo/display: This function is now inherited by all children
+	objects and it is the displayfields that is overloaded.
+@sesinfo/displayfields: New function that is called by display and is
+	overloaded for child objects.
+@performance/performance: Added code to process eyestarget object.
+
+February 4, 2003
+@performance/private/EyesTargetToPerformance: New function to create
+	performance object from eyestarget object.
+@sesinfo/subsref: Modified to return stim steps for contour, control,
+	catchcontour, and catchcontrol. 
+@eyestarget/subsref: Moved length command outside loop
+	to reduce redundency.
+
+February 5, 2003
+@sesinfo/subsref: Modified to return unleaved sequences for contour, 
+	control, catchcontour, and catchcontrol. Will also return portions
+	of sequences within these categories.
+@eyestarget/subsref: Modified to return results for contour, control,
+	catchcontour, and catchcontrol. 
+@eyestarget/ProcessTrial: Now stores data in column vectors instead
+	of row vectors to make it more readable.
+@eyestarget/eyestarget: Added code to check local directory and parent
+	directory for INI files if called without arguments. Moved 
+	repeated code to internal function ReadStimuliMarkersTargets.
+	
+February 6, 2003
+@performance/plus: Fixed code that adds session structure.
+@timing: New class for computing reaction times.
+@timing/timing: Constructor for new timing class.
+@timing/private/EyesTargetToTiming: New function to extract timing data
+	from eyestarget object.
+
+February 7, 2003
+@timing/subsref: Subsref function for new timing class.
+@timing/private/EyesTargetToTiming: Added median and quartiles for each
+	session.
+@timing/timing: Added median and quartiles fields to each session.
+@timing/display: Display function for new timing class.
+
+February 9, 2003
+@eyestarget/eyestarget: Changed default to process all trials. The
+	optional argument is now 'nobatch'.
+
+February 10, 2003
+@timing/plot: New function that plots timing data for new timing class.
+@timing/timing: Timing class now derived from eyetarget class so timing
+	class has access to sesinfo.
+@timing/displayfields: Overloaded function that displays unique class
+	fields.
+@timing/display: Removed.
+@timing/subsref: Now passes unknown arguments to eyestarget class. Added
+	output argument to indicate error state.
+@performance/performance: Now derived from eyestarget class so performance
+	class has access to sesinfo. Removed code to create performance object
+	from markers object.
+@performance/displayfields: Overloaded function that displays unique class
+	fields.
+@performance/display: Removed.
+@performance/subsref: Now passes unknown arguments to eyestarget class.
+	Added output argument to indicate error state.
+@performance/private/MarkersToPerformance: Removed.
+@performance/plot: Now uses stim_p from data structure inherited from
+	eyestarget object. Added x- and y-labels. Modified x ticks to match
+	stim_p. Now takes input argument for session to plot.
+@timing/EyesTargetToTiming: Fixed bugs in the storage of catch trial data.
+	Added code to check for conditions with no successful trials.
+@performance/plus: Added code to check similarity of objects before
+	merging them.
+@timing/plus: New function to merge timing objects.
+
+February 11, 2003
+@performance/private/ComputeMeanStdev: Added code to compute mean and std
+	for combined objects.
+@performance/performance: Added code to set Number and HoldAxis properties
+	in nptdata parent object.
+@performance/plus: Added code to update Number property in nptdata parent
+	object.
+@performance/ProcessSession: Modified to check for saved eyestarget and
+	performance objects.
+
+February 12, 2003
+@performance/plus: Added check for empty objects.
+@performance/performance: Added code to explicitly create empty object.
+	Moved creation of empty object to separate function. Added code to 
+	create empty peformance object if eyestarget is empty.
+@performance/ProcessSession: Added code to check for fake eye calibration
+	sessions. Now uses new function ispresent instead of exist. Now
+	returns empty object if skip.txt or marker file exists.
+@performance/plot: Added code to process optional arguments. Improved
+	code to handle legends. Now can plot overall data as well as session
+	data. User can now specify which data to plot.
+@eyestarget/eyestarget: Added code to explicitly create empty object using
+	null argument. Moved creation of empty object to separate function.
+@sesinfo/private/ReadIniSequence: Fixed order of fields in when creating
+	empty object.
+
+February 13, 2003
+@performance/plot: Fixed legend strings for overall plots. Added cla 
+	command to clear plots before hold on command.
+@eyestarget/eyestarget: Added code to check for empty sesinfo object
+	before trying to create eyes object.
+@performance/ProcessSession: Added code to check for empty eyestarget
+	objects returned from eye calibration sessions.
+@sesinfo/isempty: New function to check for empty object.
+@eyestarget/isempty: New function to check for empty object.
+
+February 17, 2003
+@sesinfo/display: Removed extraenous "trials" in printout message.
+
+February 19, 2003
+@performance/ProcessSession: Added 'reuseeyestarget' optional argument.
+
+February 20, 2003
+ContoursTrialResultTiming: Added some comments to remind myself that
+	this function works with data that might be missing end data.
+@performance/subsref: Added access to .session(1).sessionname.
+@performance/useProcessedMarker: New function to indicate that this
+	class does not use a processed marker file.
+@performance/ProcessSession: Modified to use checkMarkers and
+	createProcessedMarker.
+
+February 27, 2003
+@performance/plot: Updated help comments to explain new options.
+
+February 28,, 2003
+@eyestarget/diffResults: New function to return differences in marker
+	results versus eyes results.
+@eyestarget/eyestarget: Modifed to check for presence of marker file.	
+@eyestarget/ProcessTrial: Modified to check for empty tmarkers field
+	in the event that there was no marker file.
+@performance/ProcessSession: Modified to call eyestarget/diffResults.
+	Added CaseInsensitive argument to ispresent when checking for
+	presence of eye directory.
+
+March 1, 2003
+@performance/plotGroups: New function to plot grouped performance data.
+
+March 3, 2003
+@sesinfo/sesinfo: Modified to create empty object when there are no
+	arguments so load will work properly. Now uses 'auto' argument
+	when we want it to figure out the session name. Also uses ispresent.
+@eyestarget/eyestarget: Modified to create empty object when there are no
+	arguments so load will work properly. Now uses 'auto' argument
+	when we want it to try to create sesinfo and eyes objects.
+@eyestarget/ProcessSession: Updated to new format using checkMarkers and
+	createProcessedMarker.
+@performance/performance: Modified to create empty object when there are 
+	no arguments so load will work properly. Now uses 'auto' argument
+	when we want it to try to create the object automatically.
+@performance/ProcessSession: Updated to use new constructor.
+
+March 10, 2003
+@sesinfo/sesinfo: Now checks for sesinfo.mat and loads it when present
+	with the 'auto' option. Added save and redo options to save newly
+	created objects and to recreate object even if sesinfo.mat is
+	present.
+
+March 11, 2003
+@sesinfo/sesinfo: Now checks for 'redolevels', 'savelevels', 'redo',
+	and 'save' optional arguments.
+@eyestarget/eyestarget: Now checks for 'redolevels','savelevels','redo',
+	and 'save' optional arguments. Now creates sesinfo object only in the
+	parent directory and checks to see if it is empty before trying to
+	create eyestarget object. Now passes remaining varargin to sesinfo
+	when creating sesinfo object.
+@eyestarget/ProcessSession: Updated to work with new constructor. Now
+	only checks to see if there is a skip file in the session directory.
+@eyestarget/plus: New function that attempts to return non-empty object
+	just so we can use batch functions with eyestarget class.
+@performance/performance: Now checks for 'redolevels','savelevels','redo',
+	and 'save' optional arguments. Now passes remaining varargin to 
+	eyestarget when creating eyestarget object.
+@performance/ProcessSession: Updated to work with new constructor. Now
+	only checks to see if there is a skip file in the session directory.
+@timing/timing: Now checks for 'redolevels','savelevels','redo',
+	and 'save' optional arguments. Now passes remaining varargin to 
+	eyestarget when creating eyestarget object.
+@timing/ProcessSession: Updated to work with new constructor. Now
+	only checks to see if there is a skip file in the session directory.
+@timing/private/EyesTargetToTiming: Corrected "Dependencies" in help
+	comments to "None".
+
+March 12, 2003
+@performance/plus: Now uses sessions field of input objects instead of 
+	calling size.
+@timing/timing: Removed daysessions field. Rearranged object fields so
+	most of the data falls under the data field in order to simplify
+	initialization of empty objects. 
+@timing/subsref: Removed references to daysessions field.
+@timing/EyesTargetToTiming: Removed daysessions field. Now stores timing
+	in 1 array instead of in separate sessions. Added indexses field to
+	keep track of which values are associated with each session. Added 
+	fields to store medians and quartiles for each session. Now stores
+	quartiles using 3 dimension arrays to simplify access.
+@timing/plus: Makes use of the new way of storing reaction times to
+	simplify calculating overall stats for merged data.
+
+March 13, 2003
+@timing/EyesTargetToTiming: Changed overall quartiles to 2D array
+	of 3D since we don't need 3D at all.
+@timing/plus: Modified to use 2D array in overall quartiles.
+@timing/subsref: New function access timing object.
+@timing/displayfields: New function that displays the fields accessible
+	via subsref.
+
+March 14, 2003
+@performance/plot: Added catchstep optional argument. Updated help 
+	comments to add catch step argument. Added ischar check to 
+	optional arguments and removed redundant index arithmetic.
+@timing/EyesTargetToTiming: Now saves median-quartile25 and
+	quartile75-median instead.
+@timing/plus: Now saves median-quartile25 and quartile75-median instead.
+	Now checks for empty objects and updates the Number field in 
+	nptdata.
+
+March 17, 2003
+@timing/plus: Fixed bug that left out semi-colons after some lines.
+	Fixed bug in merging indexes.
+@timing/plot: New function that plots timing data.
+@timing/timing: Turned HoldAxis off by default. Fixed bug that 
+	failed to save object. Changed name of output variable so it is 
+	consistent with saved object name.
+@eyestarget/eyestarget: Fixed bug that failed to save object in all
+	but 1 case. Added code to change directory into the eye sub-dir
+	if we are not there initially and to change back when we are 
+	done so that batch programs will still work as expected. Changed
+	name of output variable so it is consistent with saved object
+	name.
+@peformance/performance: Fixed bug that failed to save object. Changed
+	name of output variable so it is consistent with saved object
+	name.
+
+March 18, 2003
+@eyestarget/eyestarget: Now prints out class name when loading or
+	saving objects. Added call to diffResults when a new eyestarget
+	object is created.
+@eyestarget/plot: Added check for sessions with no marker files.
+@sesinfo/sesinfo: Now prints out class name when loading or saving 
+	objects. Fixed bug that failed to save object in some cases.
+@performance/performance: Now prints out class name when loading or saving 
+	objects.
+@timing/timing: Now prints out class name when loading or saving objects.
+@timing/plotGroups: New function that plots contour reaction times
+	versus reaction times for case with no background and for case
+	with just a dot.
+
+March 19, 2003
+@timing/plot: Added title to plots when plotting session data.
+@timing/plotGroups: Now plots legend in the bottom right corner, labels
+	the XTicks properly, and turns hold off at the end.
+@timing/plus: Fixed bug that omitted 's' argument in input function 
+	call.
+@eyestarget/eyestarget: Added 'CaseInsensitive' argument to ispresent
+	call to handle eye directories that are capitalized. Added 
+	'CaseInsensitiveSuffix' to ispresent call to check for presence
+	of marker file.
+@performance/plus: Fixed bug that omitted 's' argument in input 
+	function call.
+
+March 22, 2003
+@performance/plot: Fixed bug in processing optional arguments. Added
+	'sessionmeans' optional argument to plot means of individual
+	sessions.
+	
+March 23, 2003
+@performance/subsref: Added .contourmean.sessions option to obtain 
+	session means. Also works for all other mean values.
+
+March 24, 2003
+@performance/plotDist: New function that plots distribution of session
+	means.
+
+March 25, 2003
+@performance/plotGroups: Switched placement of open and closed plots.
+	Added hold off at the end of each subplot.
+@performance/plot: Added help comment for 'sessionmeans' option. Added
+	missing N argument in help comments.
+@timing/plot: Added help comments.
+
+March 26, 2003
+@timing/plot: Changed colors of plots of medians and quartiles to
+	make them more visible. Fixed bug in parsing optional arguments.
+	Fixed typo in plotting catch data.
+@timing/plotDiff: Renamed from plotGroups.
+@timing/plotGroups: New function that plots reaction times for different
+	stimulus conditions.
+
+March 27, 2003
+@sesinfo/sesinfo: Added fixx and fixy fields to help comments.
+@sesinfo/displayfields: Added fixx and fixy fields.
+@sesinfo/subsref: Added access to fixx and fixy fields.
+
+March 28, 2003
+@timing/plus: Updated help comments.
+@bias: New class to look at angular biases.
+@bias/bias: Constructor for new bias class.
+@bias/private/EyesTargetToBias: New function to create bias object 
+	from eyestarget	object.
+@bias/plot: Plot function for new bias class.
+@bias/plus: Plus function for new bias class.
+@bias/subsref: Subsref function for new bias class.
+@eyestarget/eyestarget: Updated help comments to better explain what
+	happens in the 'auto' mode.
+
+April 02, 2003
+@bias/EyesTargetToBias: Changed internal data structure to more easily
+	compute reaction times as well as performance for selected salience
+	conditions.
+@bias/plus: Updated to use new internal data structure.
+@bias/plot: Updated to use new internal data structure. Added options	
+	to plot reaction times, as well as selected salience conditions.
+@bias/subsref: Updated to use new internal structure.
+@bias/bias: Now calls EyesTargetToBias to create empty object when
+	called with no arguments. Now renames object before saving.
+@bias/displayfields: Displayfields function for new bias object.
+@bias/ProcessSession: ProcessSession function for new bias object.
+@bias/useProcessedMarker: Function for new bias object.
+
+April 03, 2003
+@bias/plot: Added 'flat' optional argument to display data using
+	plot instead of polar. 
+
+April 04, 2003
+@bias/plot: Added optional argument to change plot symbols and colors. 
+	Updated help comments.
+@bias/plus: Added 'ignorediff' optional argument so that the function
+	will continue running even if there are differences.
+
+April 08, 2003
+@bias/plot: Changed default color for session data to magenta and 
+	black for overall data.
+
+April 09, 2003
+@bias/plot: Defined names for constants and plot symbols to make changes
+	easier. Changed values used in nopolar plots for correct and incorrect 
+	trials to make them clearer. Changed colors for correct and incorrect
+	data points to cyan and magenta. Changed colors for session and overall
+	data to blue and red.
+
+April 29, 2003
+@sesinfo/sesinfo: Added code to run grep on PC's.
+
+April 30, 2003
+@bias/plus: Updated help comments to include 'ignorediff' argument. Now
+	also prints out warning when 'ignorediff' argument is used.
+@performance/plus: Added 'ignorediff' optional argument.
+@timing/plus: Added 'ignorediff' optional argument.
+
+May 2, 2003
+@timing/private/EyesTargetToTiming: Fixed typo that initialized 
+	contour.indexes	instead of control.indexes.
+@bias/plus: Fixed typo in fprintf command.
+@performance/plus: Fixed typo in fprintf command.
+@timing/plus: Fixed typo in fprintf command. Now sets medians and
+	quartiles to 0 when there are no entries.
+
+May 6, 2003
+@timing/timing: Added 'CaseInsensitive' option to ispresent call.
+@sesinfo/sesinfo: Added 'CaseInsensitive' option to ispresent calls.
+@performance/performance: Added 'CaseInsensitive' option to ispresent calls.
+@eyestarget/eyestarget: Added 'CaseInsensitive' option to ispresent calls.
+@bias/bias: Added 'CaseInsensitive' option to ispresent call.
+
+May 7, 2003
+@eyestarget/ProcessTrial: Now passes match limit and eye tracker fixation
+	duration to ContoursTrialResultTiming in case we are not using
+	default values.
+@sesinfo/subsref: Added access to matchlimit and etfix values.
+@sesinfo/displayfields: Updated to reflect accessible fields.
+
+May 11, 2003
+@bias/subsref: Fixed missing close parentheses.
+
+July 2, 2003
+@eyestarget/plot: Updated to use match time limit and fixation criteria 
+	to compute result of trial.
+
+October 3, 2003
+@performance/plot: Fixed error when plotting interpolated data without 
+	catch trials.
+@timing/plot: Fixed error when there are no correct trials, and hence
+	no reaction times, in the first salience condition.
+
+January 14, 2004
+@sesinfo/private/ReadIniGabor: Added controlangle field from version
+	3 of Gabor Contours Info from Presenter 1.53.
+@sesinfo/diff.m: Now uses data structure to store fields so we 
+	don't have to keep changing the object when new fields are added.
+@sesinfo/display.m: Now uses data structure to store fields.
+@sesinfo/isempty.m: Now uses data structure to store fields.
+@sesinfo/subsref.m: Now uses data structure to store fields.
+@sesinfo/private/ReadIniFile.m: Now uses data structure to store fields.
+@sesinfo/private/ReadIniGabor.m: Now uses data structure to store 
+	fields. Added controlangle field from version 3 of Gabor Contours 
+	Info from Presenter 1.53.
+@sesinfo/private/ReadIniSequence.m: Now uses data structure to store 
+	fields.
+@sesinfo/private/ReadIniTiming.m: Now uses data structure to store 
+	fields. Added incorpenalty, incorpenaltymax, and rincorpenalty
+	fields added in version 2 of timing section in Presenter 1.53.
+@sesinfo/private/unleave.m: Now uses data structure to store fields.
+@sesinfo/private/unleave1.m: Now uses data structure to store fields.
+@sesinfo/private/unleavePsych.m: Now uses data structure to store 
+	fields.
+
+January 15, 2004
+russ.m: Added script for Russ to easily check data. Updated to use
+	cygwin to move files in ProcessDay and simplified to copy 
+	descriptor files.
+plottargets: New function to plot contour targets from stimulus.bin
+	file.
+
+January 20, 2004
+@bias/plot: Added titles to plot.
+russ.m: Updated scripts to save objects and to plot bias object by
+	salience level.
+
+January 26, 2004
+@performance/plot: Modified sessionmeans option to plot session
+	data using colors from the cool colormap while overall data is 
+	plotted in black.
+
+February 12, 2004
+@timing/plot: Fixed bug in code drawing dividers between salience 
+	conditions for trials where the target appeared in the control
+	location.
+@bias/private/EyesTargetToBias: Modified so it will also work with 
+	sessions with interpolated contours.
+
+February 16, 2004
+@bias/plot: Added code to plot data from sessions with intepolated
+	contours. Fixed bug that changed the axis limits and labeled the
+	axis for 'flat' plots only if overall data is plotted.
+@sesinfo/sesinfo: Now searches for the word Contour instead of Gabor
+	since Gabor also now appears in the .seq file created by Sparse
+	Noise. Now searches only *.ini and *.INI files instead of all
+	files in directory.
+
+February 18, 2004
+@performance/plot: Modified code to fix bug in dealing with cx in 
+	plotting data from interpolated contours. Code is also now more
+	streamlined.
+
+February 19, 2004
+@sesinfo/loadobj: New function that converts old saved objects to
+	the current object data structure and saves the new object.
+@sesinfo/updateDataStructure: New function that is called by
+	loadobj to do conversion from data structures of old objects
+	to the current data structure.
+
+February 20, 2004
+@sesinfo/loadobj: Removed code to automatically save converted
+	object since the function could be called while loading another
+	object that contains an old sesinfo object and we might not be
+	in the right directory to save the converted sesinfo object.
+
+February 24, 2004
+@bias/plot: Now uses actual match limit from sesinfo object stored
+	in eyestarget object. Fixed bug that labeled the y-axis of both 
+	types of flat plots as 'Performance'.
+
+February 25, 2004
+@bias/plot: Modified binsc so it drops the last value of bins before
+	shifting by half the bin size to get center of bins. Added code to
+	plot different salience levels in different colors. Added code
+	so we use the same color when plotting one salience level and 
+	plotting all salience levels. Now makes sure bins is a column 
+	vector. 
+@bias/plot0: Renamed old plot function.
+russ: Modified to use new capabilities of nptdata to plot individual 
+	sessions.
+russ0.m: Renamed old russ function.
+
+March 2, 2004
+@eyestarget/plot: Added code to display data in 2D.
+@sesinfo/subsref: Added access to width and height fields for use
+	with @eyestarget/plot.
+@sesinfo/displayfields: Added width and height fields.
+
+March 5, 2004
+@bias/name2index: New function that returns session index when given
+	session name or part of session name.
+@performance/name2index: New function that returns session index when 
+	given session name or part of session name.
+@performance/plot: Now checks for presence of control data and sets
+	plotcontrol and plotcombined to 0 when no control data are found.
+@timing/name2index: New function that returns session index when 
+	given session name or part of session name.
+@timing/timing: Updated description of internal data structure in help 
+	comments.
+
+March 8, 2004
+@eyestarget/eyestarget: Added onsetsMS field to store presenter 
+	trigger onsets in milliseconds.
+@eyestarget/ProcessTrial: Modified so that onsetsMS is used rather
+	than trying to convert from datapoint to time assuming a 30 kHz
+	sampling rate.
+@eyestarget/plot: Modified so that onsetsMS is used rather than 
+	trying to convert from datapoint to time assuming a 30 kHz
+	sampling rate.
+@eyestarget/loadobj: New function to convert from old eyestarget
+	objects to new object containing onsetsMS. This function tries
+	to find a raw streamer file in order to obtain the sampling rate.
+
+March 9, 2004
+@eyestarget/loadobj: Now adds data fields in proper order and inherits
+	properly from sesinfo and eyes objects.
+salienceSpikes: New script to plot spike trains according to salience
+	condition.
+
+March 16, 2004
+@eyestarget/plot: Added option to plot rasters given ispikes objects.
+
+March 18, 2004
+@eyestarget/plotEyeJitter: New function that plots the mean and 
+	std of the eye positions for multiple trials.
+@eyestarget/plotSalienceSpikes: Moved code to plot spike trains 
+	according to salience condition into separate function.
+@eyestarget/plot: Moved code for 'iSpikes' option to separate function.
+	Added 'EyeJitter' option that calls plotEyeJitter. Rearranged
+	help comments to clarify the three different kinds of plots that
+	can be created. Renamed 'Data2D' option to 'XY' and added 
+	'FixZoom' option. 
+
+March 23, 2004
+plotTargets: Added help comments.
+@eyestarget/subsref: Added access to onsetsMS field.
+
+March 31, 2004
+ReadContourStimuli: New function that returns both target window and
+	properties of gabor elements.
+@sesinfo/subsref: Now computes and returns nTotalStimuli, 
+	nContourStimuli, nControlStimuli.
+@sesinfo/displayfields: Added nTotalStimuli, nContourStimuli,
+	nControlStimuli.
+@gaborcontours/gaborcontours: Constructor for new class used to display
+	receptive fields along with gabor contours.
+@gaborcontours/plot: Plot function for new gaborcontours class.
+AnalysisClasses.graffle: First attempt at creating UML diagram for npt
+	and Contours classes.
+
+May 27, 2004
+@eyestarget/plot: Made second argument optional so number argument no
+	longer necessary for plot options that don't use it.
+
+June 4, 2004
+@eyestarget/plotEyeJitter: Now includes help comments and parsing of 
+	optional input arguments previously in main plot function. Added
+	option to create RepsonseWeighted plots. Now calls eyejitter object
+	to do most of the work.
+@eyestarget/plot: Moved help comments for EyeJitter to plotEyeJitter
+	function. Moved parsing of optional input arguments for EyeJitter to
+	plotEyeJitter function.
+@eyestarget/plotSalienceSpikes: Started to add code to plot histograms 
+	(unfinished).
+@sesinfo/subsref: Now takes advantage of the .data structure to greatly
+	simplify subsref function. The remaining code is being kept for
+	backward compatability.
+
+June 16, 2004
+@gaborcontours/plot: Made second argument optional. Now looks for 
+	optional numeric argument to use for selecting which stimuli
+	to plot.
+
+June 29, 2004
+@eyestarget/examples.txt: New file to illustrate use of eyestarget 
+	objects. Currently contains code for creating plot for included 
+	trials.
+@eyestarget/getTrialsInFields.m: New function that figures out which 
+	trials have stable eye positions within the limits of receptive 
+	fields.
+@gaborcontours/subsref.m: New function to access gaborcontours objects.
+@eyestarget/plot.m: Added 'InFields' option which calls the 
+	getTrialsInFields function.
+@gaborcontours/gaborcontours.m: Now stores gabor size in data structure.
+@gaborcontours/plot.m: Now uses rectangle to draw gabors with the 
+	correct	size.
+
+June 30, 2004
+@eyestarget/getTrialsInFields.m: Now uses Arg.FieldMark instead to
+	determine which fields should be used in computing limits. Function
+	moved to npt/scripts/view/@eyejitter class since it does not contain
+	any code specific to contour sessions now that FieldMark is an
+	optional input argument and defaults to 0.
+@eyestarget/plot.m: Removed 'InFields' option since getTrialsInFields
+	has been moved to the eyejitter class. Moved argument parsing for
+	'iSpikes' option into plotSalienceSpikes. Now removes 'EyeJitter'
+	from varargin before passing it on to either plotEyeJitter or
+	plotSalienceSpikes.
+@eyestarget/plotEyeJitter: Replaced plot with plotEyeJitter in help
+	comments. Updated optional input arguments in help comments. Added
+	description of ResponseWeighted optional input argument. Changed 
+	default group directory to group0001 instead of group001 to match
+	new data hierarchy.
+@eyestarget/plotSalienceSpikes: Added input	argument parsing code from 
+	eyestarget/plot. Added code to plot psth for different salience
+	conditions.
+
+July 5, 2004
+@gaborcontours/plot: Fixed bug that failed to set n when a numeric 
+	argument was present (e.g. when using InspectGUI(gc)).
+@eyestarget/examples: Removed code used to generate trials in fields.
+	This functionality now exists in the eyejitter class in the method
+	getTrialsInFields.m. Added example of using 'XY' option in
+	@eyestarget/plot.m with InspectGUI.
+@eyestarget/plotSalienceSpikes: Added code to use 
+	@eyejitter/getTrialsInFields to get excluded points before 
+	calculating mean and standard deviation. Added code to label axes
+	and generate legend. Now only plots all the salience conditions at
+	the contour target, the highest salience condition for the control
+	target and the catch trials at the contour target. These are the
+	trials where the stimulus in the receptive field is always the 
+	optimal	orientation. If there are multiple iSpikes objects present,
+	the subplots are now arranged in rows instead of in columns.
+
+July 6, 2004
+@contoursPSTH: New class that computes the PSTH of contour sessions.
+@contoursPSTH/contoursPSTH.m: Constructor for new contoursPSTH class.
+@contoursPSTH/plot.m: Plot function for new contoursPSTH class.
+
+July 8, 2004
+@contoursPSTH/contoursPSTH.m: Moved code that calculates the mean and
+	standard deviation to @contours/private/getContoursPSTH.m so it can
+	also be called by plot when the parameters do not match the ones
+	used in the creation of the object.
+@contoursPSTH/private/getContoursPSTH.m: New function that calculates the
+	mean and standard deviations of the PSTH.
+@contoursPSTH/plot: Added option to check if specified parameters match
+	those used in creating the object and performs recalculation when
+	there is a mismatch.
+@contoursPSTH/subsref: New function to access contoursPSTH objects.
+
+July 12, 2004
+@contoursPSTH/private/getContoursPSTH.m: Now returns error status
+	if there is a problem so that contoursPSTH.m can create empty
+	object. Removed code that attempted to call createEmptyObject,
+	which is only accessible from within the constructor.
+@contoursPSTH/contoursPSTH.m: Now checks error status from 
+	getContoursPSTH.m and creates empty object if necessary.
+@contoursPSTH/plot.m: Added comment about ignoring the new error status
+	from getContoursPSTH.m.
+ContoursCmds.m: New file to list sequence of commands used to look at
+	contour data.
+
+July 19, 2004
+@contoursPSTH/contoursPSTH.m: Fixed bug that was still passing objects
+	to getContoursPSTH.
+@contoursPSTH/plot.m: Added Recalc option to force recalculation of
+	data. 
+@contoursPSTH/private/getContoursPSTH.m: Fixed bug that was not taking
+	the square root of the variance when computing standard deviation.
+@eyestarget/plotSalienceSpikes.m: Now passes varargin during call to
+	getTrialsInFields. Now uses separateAxis to setup multiple plots.
+	Now computes mean standard deviation using Matlab functions instead
+	of computing running sum so we can compare to code in 
+	getcontoursPSTH. Now includes the number of trials in each condition
+	in the legend.
+
+August 3, 2004
+ContoursCmds.m: Added example of running checksystem with sync and
+	trigger data. Added example of using 'cygwinmove' in ProcessSession.
+@contoursPSTH/contoursPSTH.m: Added directory information when creating
+	nptdata object.
+@contoursPSTH/plot.m: Added 'EyesTarget' option to call 
+	plotSalienceSpikes with ispikes object. Moved x- and y- label
+	commands so that different kinds of plots are labelled correctly.
+@contoursPSTH/private/getContoursPSTH.m: Now correctly returns empty
+	data matrix (which is a required output) when there is an error.
+@eyestarget/plotSalienceSpikes.m: Added 'XLimitsEval' option so that we
+	can specify limits with respect to stimulus onset. Modified code to
+	display spike trains to display trials from all contour trials, plus
+	the set of control trials with the highest salience, and the catch 
+	trials at the contour location. Now also uses the excluded trials 
+	from the eyejitter object. The reaction times are now plotted as
+	well.
+@timing/private/EyesTargetToTiming.m: Fixed typo in comment.
+@performance/plot: Modified to use getOptArgs so it will work with
+	npdata/plot which does not pass a numeric argument when calling
+	the plot function.
+
+September 7, 2004
+ContoursCmds.m: Updated to create diary in the day directory and to
+	not run KlustaKwik by default.
+ContoursMarkersToTrials.m: Fixed bug that failed to initialize output
+	arguments in case input is empty.
+@performance/plot.m: Now correctly uses double braces to set the flags
+	field in Args.
+
+September 8, 2004
+@bias/plot.m: Removed mandatory second input argument so it will work
+    with nptdata/plot. Now uses getOptArgs to parse optional input
+    arguments. Now lists the sessionname in the title either when
+    there is a numeric argument (i.e. individual data set is specified),
+    or if there is only 1 data set (i.e. when using nptdata/plot).
+    Updated help comments to reflect new changes. Removed Session from
+    Args since it is implied when there is a numeric argument.
+@timing/plot.m: Removed mandatory second input argument so it will work
+    with nptdata/plot. Now uses getOptArgs to parse optional input
+    arguments. Updated help comments to reflect new changes.
+
+October 1, 2004
+@contourspsth: Changed to lower case so that objects saved in Windows
+	will work on non-Windows machines.
+@contourspsth/contourspsth.m: Changed case of contourspsth.
+@contourspsth/loadobj.m: Changed case of contourspsth.
+@contourspsth/plot.m: Changed case of contourspsth.
+@contourspsth/subsref.m: Changed case of contourspsth.
+@contourspsth/private/getContoursPSTH.m: Changed case of contourspsth.
+@contoursxcorr: Changed to lower case so that objects saved in Windows
+	will work on non-Windows machines.
+@contoursxcorr/contoursxcorr.m: Changed case of contoursxcorr.
+@contoursxcorr/get.m: Changed case of contoursxcorr.
+@contoursxcorr/plus.m: Changed case of contoursxcorr.
+@contoursxcorr/subsref.m: Changed case of contoursxcorr.
+ContoursCmds.m: Changed references to contourspsth to lower case.
+
+October 4, 2004
+@eyestarget/eyestarget.m: Replaced 'CaseInsensitiveSuffix' option in 
+	call to nptDir with 'CaseInsensitive' since the former option is no
+	longer available.
+@sesinfo/sesinfo.m: Replaced 'CaseInsensitiveSuffix' option in call to 
+	nptDir with 'CaseInsensitive' since the former option is no	longer 
+	available.
+
+October 13, 2004
+Removed directories @contoursPSTH and @contoursXCorr on CVS server by
+	hand since SmartCVS on Windows is unable to distinguish	lowercase
+	and uppercase.
+
+November 9, 2004
+ContoursCmds.m: Added additional braces for Objects argument.
+@contourspsth/contourspsth.m: Changed case of getContoursPSTH.
+
+November 11, 2004
+ContoursTrialResultTiming.m: Added optional additional argument that
+	contains saccade data from fvtGenerateSessionEyeMovements. Added
+	code to create markers using saccade data.
+@eyestarget/ProcessTrial.m: Added code to use saccade data to compute
+	reaction times.
+@eyestarget/private/ProcessAllTrials.m: Added 'EyeMovements' optional
+	inpout argument to use saccade data in eyemovements object to 
+	compute reaction times. Optional input arguments to eyemovements 
+	are also now passed along properly.
+@eyestarget/eyestarget.m: Now uses getOptArgs to parse optional input
+	arguments. Now passes modified varargin to ProcessAllTrials so
+	optional input arguments to fvtGenerateSessionEyeMovements can
+	be passed to eyemovements object which is called in 
+	ProcessAllTrials.
+@eyestarget/plot.m: Now uses data stored in object instead of calling
+	ContoursTrialResultTiming again.
+
+November 15, 2004
+@bias/plot.m: Fixed typo in spelling of catch data in code that plots
+	data for individual salience levels.
+
+November 17, 2004
+ContoursCmds.m: Removed unnecessary {} in call to nptdata/plot.
+@eyestarget/eyestarget.m: Fixed bug that was using redo instead of
+	Args.RedoLevels.
+@sesinfo/private/unleave1.m: Broke up long lines into shorter lines.
+
+November 18, 2004
+ContoursCmds.m: Added new line at the end of the file.
+@eyestarget/eyestarget.m: Now calls dirLevel to move to eye
+	directory before trying to instantiate object. This way other
+	objects don't have to worry about changing directories before 
+	instantiating the object.
+@sesinfo/sesinfo.m: Added comments to describe isequence, ulsequence,
+	and sequence fields.
+@sesinfo/private/unleave1.m: Now correctly gathers the trial numbers
+	for the tuning stimuli.
+@contourstuning: New class to compute orientation tuning curves.
+@contourstuning/contourstuning.m: Constructor function for new 
+	contourstuning class.
+@contourstuning/plot.m: Plot function for new contourstuning class.
+@contourstuning/plus.m: Plus function for new contourstuning class.
+@contourstuning/subsref.m: Subsref function for new contourstuning 
+	class.
+@sesinfo/getTuningTrials.m: New function to return the trial numbers
+	corresponding to the different orientation tuning stimuli.
+
+November 19, 2004
+@contourstuning/subsasgn.m: New function to modify object fields.
+@contourstuning/contourstuning.m: Removed optional input arguments in
+	call to ispikes since we don't really want to regenerate the ispikes
+	object. Now checks for sessions with no tuning stimuli and correctly
+	creates empty data matrices and the proper setIndex. Now stores
+	spike counts instead of mean and std so we can plot the distribution
+	of the values using boxplot.
+@contourstuning/plus.m: Modified to concatenate spike counts instead of
+	mean and std and increments setIndex accordingly.
+@contourstuning/contourstuning.m: Added option to do boxplots. Now 
+	computes mean and std on the fly to create default plot.
+ContoursCmds.m: Added example of computing contourstuning object.
+@contourstuning/plot.m: Now creates boxplots by default. Added option to
+	create imagesc and line plots of histogram data.
+
+November 22, 2004
+@eyestarget/private/ProcessAllTrials.m: Added option to take 
+	eyemovements object as optional input argument so it does not have
+	to be recalculated.
+
+January 21, 2005
+russ.m: Modified the path to the template descriptor file to a fully
+	qualified path so this script will now work from any day directory.
+
+January 24, 2005
+@eyestarget/eyestarget.m: Put back code from old version on cvs that
+	changes directory to the eye directory in cases dirLevel does not
+	work (i.e. the data hierarchy has not been updated to the latest
+	format).
+ContoursTrialResultTiming.m: Fixed bug that was not computing result
+	when not using eyemovement data.
+russ.m: Updated call to nptdata/plot to use proper embedding of cell
+	arrays for objects and plot options.
+@bias/plot.m: Now correctly checks for sessions with on incorrect
+	trials. Now plots incorrect trials with a different symbol.
+
+January 25, 2005
+russ.m: Modified to work with session directories named session01 etc.
+
+April-18-2005
+ChangeLog.txt: Renamed to ShihChengChangeLog.txt so cvsci will work. 
+@eyestarget/eyestarget.m: Replaced calls to dirLevel with getDataDirs. 
+@contoursxcorr/contoursxcorr.m: Replaced calls to dirLevel with 
+	getDataDirs. 
+@contourstuning/plot.m: Replaced calls to dirLevel with getDataDirs. 
+
+May-17-2005
+ShihChengChangeLog.txt: Removed cvs watch from the Contours directory and 
+	added Contours directory to CVSROOT/loginfo so that changes to the 
+	Contours project are emailed to Rodrigo and Michael.
+@eyestarget/plotSalienceSpikes.m: Added hack to handle incomplete sessions. 
+@eyestarget/eyestarget.m: Removed hack to find timing.mat files created by 
+	ProcessSession since it might find timing.mat files created by the 
+	timing object. 
+
+June-07-2005
+@eyestarget/eyestarget.m: Removed commands to change directories before 
+	instantiating sesinfo object since the sesinfo object now uses 
+	getDataDirs to get itself to the right directory. 
+@sesinfo/sesinfo.m: Updated to use getOptArgs to process optional input 
+	arguments and the style in npt/scipts/view/dirfiles. Now uses 
+	getDataDirs to move to appropriate directory before trying to read ini 
+	file. 
+
+June-08-2005
+@sesinfo/sesinfo.m: Now correctly changes directory back to the original 
+	directory if needed. 
+@eyestarget/eyestarget.m: Removed code that was unnecessarily changing 
+	directories. Removed command that attempted to load a file with name 
+	stored in aname(1).name. 
+
+June-14-2005
+@sesinfo/sesinfo.m: Addded code to check for incomplete sessions 
+	(commented out for now as we try another method).
+@timing/private/EyesTargetToTiming.m: Now checks for incomplete sessions 
+	and pads the data in the eyestarget object with nans. 
+@performance/private/EyesTargetToPerformance.m: Now checks for incomplete 
+	sessions and pads the data in the eyestarget object with nans. 
+	Replaced calls to sum with nansum and length with sum(~isnan()) so 
+	that data with nan's are calculated correctly. 
+@sesinfo/subsref.m: Now returns the trials field, which is used to 
+	determine if a session is incomplete. 
+@sesinfo/private/ReadIniSequence.m: Added code to check for incomplete 
+	sessions (commented out for now as we try another method). 
+@eyestarget/subsasgn.m: New function to change data in eyestarget objects. 
+	This allows us to pad the data for incomplete sessions so other 
+	objects can index normally into the eyestarget object without having 
+	to modify the indices for incomplete sessions. 
+
+June-15-2005
+@eyestarget/plot.m: Now plots both target windows with the correct window 
+	plotted in red and the other plotted in black. 
+
+June-20-2005
+checkStimOri.m: New function to check the orientation of the stimulus with 
+	the results of the unleave function. 
+@contourspsth/private/getContoursPSTH.m: Now uses the sequence field 
+	instead of the ulsequence field in the sesinfo object that is part of 
+	the eyestarget object. This allows incomplete sessions to be handled 
+	transparently. 
+@sesinfo/private/ReadIniSequence.m: Now checks for the presence of 
+	incomplete sessions, including for empty last trials, before calling 
+	the unleave functions. Now calls the unleave functions with the number 
+	of complete trials so those functions don't have to recompute it. 
+@gaborcontours/gaborcontours.m: Now removes GaborPixels from varargin and 
+	renames it varargin2. The variable varargin2 is then passed on to other 
+	objects that are used in the creation of this object. 
+@sesinfo/displayfields.m: Removed ulsequence.contour and other similar 
+	entries since we should be using sequence.contour and so on from now 
+	on. 
+salienceSpikes.m: Now uses the sequence field instead of the ulsequence 
+	field in the sesinfo object that is part of the eyestarget object. This 
+	allows incomplete sessions to be handled transparently. 
+@sesinfo/private/unleavePsych.m: Rewritten to use histc to more efficiently 
+	unleave the stimulus sequence. Now handles incomplete sessions properly 
+	as well. 
+@eyestarget/subsref.m: Now uses the sequence field instead of the 
+	ulsequence field when calling the subsref function for the sesinfo 
+	object. This allows incomplete sessions to be handled transparently. 
+@sesinfo/subsref.m: Now returns value of inlcludetuning field. Now returns 
+	the list of completed trials for each salience condition when for 
+	example sequence.contour(1) is used. This allows incomplete sessions 
+	to be handles transparently by other objects. Removed code that parsed 
+	the sequence into stimulus and repetitions since that was not being 
+	used. Now returns lists of trials corresponding to the different tuning 
+	stimuli using the sequence.tuning format so incomplete sessions will be 
+	handled transparently. 
+@eyestarget/plotSalienceSpikes.m: Now uses the sequence field instead of 
+	the ulsequence field in the sesinfo object that is part of the 
+	eyestarget object. This allows incomplete sessions to be handled 
+	transparently. 
+@eyestarget/plotEyeJitter.m: Now uses the sequence field instead of the 
+	ulsequence field in the sesinfo object that is part of the eyestarget 
+	object. This allows incomplete sessions to be handled transparently. 
+@sesinfo/private/unleave1.m: Rewritten to use histc to more efficiently 
+	unleave the stimulus sequence. Now handles incomplete sessions properly 
+	as well. 
+@eyestarget/diffResults.m: Now prints out the number of trials in the 
+	marker file and in the eye files when printing out the mismatch error. 
+@bias/private/EyesTargetToBias.m: Now uses the sequence field instead of 
+	the ulsequence field in the sesinfo object that is part of the 
+	eyestarget object. This allows incomplete sessions to be handled 
+	transparently. Now uses the new concat function to concatenate 
+	multiple numeric vectors together. 
+@performance/private/EyesTargetToPerformance.m: Removed code that checks 
+	for incomplete sessions since this is now taken care of by the unleave 
+	functions in the sesinfo class. 
+@timing/private/EyesTargetToTiming.m: Removed code that checks for 
+	incomplete sessions since this is now taken care of by the unleave 
+	functions in the sesinfo class. 
+@eyestarget/subsasgn.m: Now uses the sequence field instead of the 
+	ulsequence field when calling the subsref function for the sesinfo 
+	object. This allows incomplete sessions to be handled transparently. 
+@contourspsth/plot.m: Added a XLim optional input argument so we can line 
+	up the PSTH with the raster plot created by plotSalienceSpikes. 
+@sesinfo/private/unleave.m: Rewritten to use histc to more efficiently 
+	unleave the stimulus sequence. Now handles incomplete sessions properly 
+	as well. 
+
+June-21-2005
+@sesinfo/sesinfo.m: Now removes the newline character from the filename 
+	string since Matlab 7 does not seem to be able to find the file with 
+	the newline character present in the filename. 
+@eyestarget/plotSalienceSpikes.m: Removed hack to deal with incomplete 
+	sessions since sesinfo now handles incomplete sessions properly. 
+@gaborcontours/gaborcontours.m: Added call to getDataDirs to change to the 
+	proper directory before looking for saved object. 
+@gaborcontours/subsref.m: Now correctly calls mapfields/subsref instead of 
+	nptdata/subsref when the index arguments are unknown. 
+@gaborcontours/plot.m: Now changes to the proper directory before trying 
+	to read the stimulus file. 
+
+June-23-2005
+@performance/plot.m: Modified to work around change in errorbar function 
+	in Matlab 7 that returns only 1 handle instead of the 2 handles 
+	returned by Matlab 6.5. Now works for both Matlab 6.5 and Matlab 7. 
+@timing/plotDiff.m: Modified to work around change in errorbar function in 
+	Matlab 7 that returns only 1 handle instead of the 2 handles returned 
+	by Matlab 6.5. Now works for both Matlab 6.5 and Matlab 7. 
+@timing/plot.m: Modified to work around change in errorbar function in 
+	Matlab 7 that returns only 1 handle instead of the 2 handles returned 
+	by Matlab 6.5. Now works for both Matlab 6.5 and Matlab 7. 
+@timing/plotGroups.m: Modified to work around change in errorbar function 
+	in Matlab 7 that returns only 1 handle instead of the 2 handles 
+	returned by Matlab 6.5. Now works for both Matlab 6.5 and Matlab 7. 
+@performance/plotGroups.m: Modified to work around change in errorbar 
+	function in Matlab 7 that returns only 1 handle instead of the 2 
+	handles returned by Matlab 6.5. Now works for both Matlab 6.5 and 
+	Matlab 7. 
+@contourstuning/plot.m: Updated call to getDataDirs to shorten names by 
+	adding 'DirString'. 
+
+June-27-2005
+@eyestarget/ProcessTrial.m: Now correctly transposes SacData so that 
+	trials with more than one saccade are rejected correctly. 
+
+June-30-2005
+@eyestarget/plotSalienceSpikes.m: Now just draws lines between salience 
+	conditions instead of using patch object, which made the spikes harder 
+	to see. 
+ContoursTrialResultTiming.m: Now saves the reaction times for all trials. 
+	Now returns result values other than 0 and 1 to distinguish between the 
+	different possible results. Now properly differentiates between trials 
+	with no saccades identified by the eye movement analysis and trials 
+	where eye movement analysis are not used. 
+@eyestarget/ProcessTrial.m: Now sets the default value of SaccadeData to 
+	nan to correctly distinguish between trials with no saccades identified 
+	by the eye movement object (eyemvt) from trials where the eyemvt object 
+	was not used. 
+@sesinfo/getTuningTrials.m: Now uses the sequence.tuning field in sesinfo 
+	objects to return the trial numbers for the different tuning stimuli. 
+	The 0's returned by the sesinfo object are replaced with nan so that 
+	when the mean and standard error are computed in the contourstuning 
+	object, values of 0, which indicate trials missing from incomplete 
+	sessions, are not confounded with complete trials with 0 spikes. 
+@contourspsth/plot.m: Turned off the legend as it was obscuring the plots. 
+	Need to find way to reduce size of legend and perhaps to automatically 
+	place it in the least intrusive place. 
+checkStimOri.m: Removed the redo option to sesinfo. 
+@performance/performance.m: Now correctly changes to the proper directory 
+	before checking for saved performance objects. 
+@contourstuning/plot.m: Now plots the mean and standard error by default 
+	instead of box plots, which is now an optional plot. Added code to 
+	handle LabelsOff and Color so this function can be used with 
+	nptgroup/plot. Now uses the short form of the directory in the title 
+	when plotting just one cell instead of "... data for 1 cells". Added 
+	code to check for empty data, which might no longer be necessary since 
+	we no longer save objects with no tuning trials. Now checks to make 
+	sure the histograms are not empty before trying to plot them. 
+@gaborcontours/plot.m: Added options to control the X and Y axes limits. 
+@contourstuning/contourstuning.m: Now correctly returns empty object when 
+	there are no tuning trials. Now uses nanindex to properly handle 
+	incomplete sessions. 
+@sesinfo/getTuningTrials.m: Moved code that replaced 0's for incomplete 
+	sessions with nan to contourstuning since it is more relevant there. 
+	Removed commented code that was made redundant with the use of the 
+	sequence field in the sesinfo objects. 
+@contourstuning/contourstuning.m: Moved code that used to be in 
+	getTuningTrials that replaced 0's in the trial numbers with nan's to 
+	this function since it is more relevant here. 
+@contourstuning/contourstuning.m: Now allows creation of objects with no 
+	tuning data so that we can indicate that there are no tuning trials in 
+	the title instead of having it be blank. Now computes spike counts only 
+	when there are valid tuning trials. 
+@contourstuning/plot.m: Added Normalized option to plot normalized spike 
+	counts so that we can plot tuning curves for different cells on the 
+	same axis (e.g. using nptgroup objects). Now checks for objects with no 
+	tuning data at the beginning so we don't have to have code in every 
+	option checking for sessions with no tuning data. Modified code to set 
+	the colors of the errorbars so that it will work with both Matlab 6 and 
+	7. Added code to add x and y axis labels. Now checks to make sure that 
+	the maximum spike count is not 0 when computing the normalized spike 
+	count. 
+@eyestarget/plot.m: Now includes the result of the trial in the title. 
+ContoursMarkersToTrials.m: Fixed bug that was interpreting 1 and 2 as 
+	results of the trial when they are actually the stimulus onset and 
+	fixation offset times. Now correctly returns the result of the trial 
+	according to Control. 
+
+July-01-2005
+@performance/private/EyesTargetToPerformance.m: Modified to handle the 
+	various different results now returned by the eyestarget object. 
+
+July-12-2005
+@eyestarget/eyestarget.m: Modified to work with marker files with upper-
+	case suffixes. 
+
+
+June-04-2006
+@gaborcontours/gaborcontours.m: Committing some changes that were made some 
+	time ago but for some reason was not committed. 
+
+June-05-2006
+@gaborcontours/plot.m: Fixed typo in comments. 
+
+October-09-2006
+ContoursCmds.m: Fixed typo in spelling of eyestarget. 
+
+January-03-2007
+@sesinfo/sesinfo.m: Now returns empty object it no ini files are found. 
+@performance/ProcessSession.m: Now returns additional output argument to 
+	make it compatible with nptdata/ProcessDay.

@@ -1,0 +1,124 @@
+if(Args.Session)
+	if(plotcontour)
+        for sal = 1:obj.eyestarget.stim_steps.contour
+        	% contour correct
+			contour correct sal1
+        	% contour incorrect
+			contour incorrect sal1
+			
+        	if(plotcontrol)
+	        	% control correct
+				control correct sal1
+	        	% control incorrect
+				control incorrect sal1
+			end
+		end
+		
+		if(plotcatch)
+            % catchcontour correct
+
+            % catchcontour incorrect
+
+            if(plotcontrol)
+                % catchcontrol correct
+
+                % catchcontrol incorrect
+
+            end % if(plotcontrol)
+        end % if(plotcatch)
+        
+        if(plotcontrol)
+        	if(plotcatch)
+        		% plot contour, control, & catch
+        	else
+        		% plot contour & control
+        	end
+        else
+        	if(plotcatch)
+        		% plot contour & catch
+        	else
+        		% plot contour
+        end
+        
+        % plot contour
+       	if(plotcontrol)
+	        % plot control
+    	end
+    	
+		if(plotcatch)
+	        % plot catchcontour
+	        
+	        if(plotcontrol)
+		        % plot catchcontrol
+    
+            end % if(plotcontrol)
+        end % if(plotcatch)
+
+    end % if plotcontour
+
+    if plotcontrol
+        for sal = 1:obj.eyestarget.stim_steps.control
+
+        end % for sal = 1:obj.eyestarget.stim_steps.control
+
+        if (~isempty(obj.data.catchcontrol))
+
+        end % if (~isempty(obj.data.catchcontrol))
+
+    end % if plotcontrol
+
+end % if Args.Session
+
+if (Args.Overall & (~Args.Session))
+    if plotcontour
+        for sal = 1:obj.eyestarget.stim_steps.contour
+
+        end % for sal = 1:obj.eyestarget.stim_steps.contour
+
+        if (~isempty(obj.data.catchcontour))
+
+        end % if (~isempty(obj.data.catchcontour))
+
+    end % if plotcontour
+
+    if plotcontrol
+        for sal = 1:obj.eyestarget.stim_steps.control
+
+        end % for sal = 1:obj.eyestarget.stim_steps.control
+
+        if (~isempty(obj.data.catchcontrol))
+
+        end % if (~isempty(obj.data.catchcontrol))
+
+    end % if plotcontrol
+
+end % if (Args.Overall & (~Args.Session))
+
+if Args.Overall
+    if plotcontour
+    
+    end % if plotcontour
+
+    if plotcontrol
+    
+    end % if plotcontrol
+    
+end % if Args.Overall
+
+
+			contour correct sal2
+			contour incorrect sal2
+			control correct sal2
+			control incorrect sal2
+
+			contour correct sal3
+			contour incorrect sal3
+			control correct sal3
+			control incorrect sal3
+
+			catchcontour correct
+			catchcontour incorrect
+
+			catchcontrol correct
+			catchcontrol incorrect
+

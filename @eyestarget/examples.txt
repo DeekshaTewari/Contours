@@ -1,0 +1,2 @@
+load contourDirs
+InspectGUI(ndcontours,'Objects',{'eyestarget' {'XY'}})

@@ -1,0 +1,125 @@
+
+May-16-2005
+@eyestarget/private/ProcessAllTrials.m: Modified to use the new eyemvt object. 
+ContoursMarkersToTrials.m: Now uses the 1 and 0 flags to determine the result of the trial so that it will work with the marker files created in the match-to-sample task. 
+ContoursTrialResultTiming.m: Now only computes reaction times for trials with a single saccade. 
+russ.m: 
+@eyestarget/eyestarget.m: *HACK* Modified to look for *timing.mat since the descriptor files were not named properly. 
+
+September-26-2005
+
+December-12-2005
+russ.m: 
+@eyestarget/private/ProcessAllTrials.m: some changes to deal with et.targets and et.eyes.number with different length
+ContoursCmds.m: 
+@eyestarget/eyestarget.m: Some changes to deal with the problem of having t.targets t.markers t.onsets and t.onsetsMS with different sizes (like in incomplete sessions 
+
+January-03-2006
+
+test
+
+January-19-2006
+@lfpcontrolspec/plot.m: 
+@lfpcontourspec/plus.m: 
+@lfpcontourep/get.m: 
+@lfpcontourep/subsref.m: 
+@lfpcontourep/plot.m: 
+@lfpcontourspec/plot.m: 
+@lfpcontrolcoh/plot.m~: 
+@lfpcontourcoh/lfpcontourcoh.m: 
+@lfptraces/lfpaverage.m~: 
+@lfpcontrolep/subsref.m: 
+@lfpcontourspec/get.m: 
+@lfpcontourspec/subsasgn.m: 
+@lfpcontourcoh/lfpcontourspec.m~: 
+ProcessSessionLFP.m: 
+@lfpcontourspec/subsref.m: 
+@lfpcontrolep/lfpcontrolep.m: 
+@lfpcontourcoh/subsasgn.m: 
+@lfpcontourcoh/subsref.m: 
+@lfpcontrolspec/plot.m~: 
+@lfptraces/lfptraces.m: 
+@lfpcontrolspec/lfpcontourspec.m~: 
+@lfpcontourcoh/get.m: 
+@lfpcontourep/plus.m~: 
+@lfpcontourep/lfpcontourep.m: 
+@lfpcontrolspec/plus.m: 
+@lfpcontrolcoh/plus.m: 
+@lfpcontourcoh/plot.m: 
+@lfptraces/get.m: 
+@lfpcontrolspec/subsref.m: 
+@lfpcontrolcoh/lfpcontourcoh.m~: 
+RodrigoChangeLog.txt: 
+@lfpcontrolspec/lfpcontrolspec.m: 
+@lfpcontourcoh/plus.m: 
+@lfpcontourep/lfpcontrolep.m~: 
+@lfpcontourspec/lfpcontourspec.m: 
+@lfpcontrolcoh/subsref.m: 
+@lfptraces/subsref.m: 
+@lfpcontourspec/plot.m~: 
+@lfptraces/subsasgn.m~: 
+@lfpcontourep/plot.m~: 
+@lfpcontrolcoh/get.m: 
+@lfpcontourep/subsasgn.m: 
+@lfpcontrolspec/subsasgn.m: 
+@lfpcontrolcoh/subsasgn.m: 
+@lfpcontrolep/subsasgn.m: 
+@lfptraces/get.m~: 
+@lfpcontourep/plus.m: 
+@lfptraces/plus.m: 
+@lfpcontrolep/lfpcontrolep.m~: 
+@lfpcontourep/lfpcontourep.m~: 
+@lfpcontrolep/plus.m: 
+@lfptraces/plot.m~: 
+@lfpcontrolep/plot.m: 
+@lfpcontourcoh/lfpcontourcoh.m~: 
+@lfpcontrolspec/get.m: 
+@lfptraces/lfptraces.m~: 
+@lfpcontrolcoh/lfpcontrolcoh.m: 
+@lfpcontrolep/plus.m~: 
+@lfptraces/plot.m: 
+@lfptraces/subsasgn.m: 
+@lfpcontrolcoh/plot.m: 
+@lfpcontrolep/plot.m~: 
+@lfpcontrolep/get.m: 
+LFPaverage.m: 
+@lfpcontrolcoh/lfpcontourspec.m~: 
+@lfpcontourspec/lfpcontourspec.m~: 
+@lfpcontourcoh/plot.m~: 
+
+January-20-2006
+
+February-09-2006
+LFPaverage.m: 
+RodrigoChangeLog.txt: 
+ProcessSessionLFP.m: 
+
+March-20-2006
+@lfptraces/plot.m~: teh help is now available
+@lfpdiffcoh/plot.m~: 
+@lfpdiffcoh/get.m: teh get function gets now ride of the when the variable only contains nans
+@lfptraces/lfptraces.m~: 
+@lfpdiffspec/plot.m: 
+@lfpdiffspec/get.m: 
+@lfpdiffcoh/lfpdiffcoh.m: this object can now be used to compare catchtrials as well
+@lfpcontourspec/lfpcontourspec.m: 
+@lfpdiffspec/plus.m: 
+@lfpcontourspec/plot.m: 
+@lfpdiffspec/lfpdiffspec.m: 
+@lfptraces/lfptraces.m: 
+@lfptraces/plot.m: the help is nbow available
+@lfpdiffcoh/plot.m: the plot fct can now plots raw data instead of only the comparison matrix
+@lfptraces/get.m: 
+@lfpdiffspec/plot.m~: 
+@lfpcontourspec/get.m: 
+LFPaverage.m: addition of the cohgram code to normalized each trial independently and possibility to cut the edges of the spectro/cohgram to avoir artifacts
+@lfpdiffcoh/plus.m: 
+@lfpcontourspec/lfpcontourspec.m~: 
+
+June-15-2006
+@lfptraces/plot.m: added the option to change teh color scale plus a detailed correction for the plotting the precise timing of the events 
+@lfptraces/plot.m~: 
+@lfptraces/get.m: added teh option to get more specific traces using the getTrial fct
+@lfpdiffspec/plot.m~: 
+@lfptraces/get.m~: 
+@lfpdiffspec/plot.m: added the option to show the spectrogram of individual stimulus condition plus teh option to change the color scalejust to get rid of some edge artifact

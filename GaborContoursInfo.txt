@@ -1,0 +1,139 @@
+Gabor Contours Info
+
+Reading raw files:
+[data,nc,sr,so,points] = nptReadStreamerFile('annie05020206.0001');
+
+There are 5 channels:
+1: Presenter Trigger
+2: Vertical Eye Position
+3: Horizontal Eye Position
+4: Channel 1
+5: Channel 2
+
+Reading High Pass Files (filtered at 500 Hz to 10 kHz):
+[data,nc,sr,so,points] = nptReadStreamerFile('highpass\annie05020206_highpass.0001');
+
+There are 2 channels:
+1: Channel 1
+2: Channel 2
+
+To plot any of these files:
+tms = 0:1/30:2000;
+plot(tms(1:points),data(1,:))
+
+Reading Low Pass Files (resampled to 1 kHz, filtered at 1 Hz to 150 Hz):
+[data,nc,sr,so,points] = nptReadStreamerFile('lfp\annie05020206_lfp.0001');
+
+There are 2 channels:
+1: Channel 1
+2: Channel 2
+
+Note sr returned from the above function will be 1000.
+
+Reading Eye Files (resampled to 1 kHz)
+[data,nc,sr,dt,points] = nptReadDataFile('eye\annie05020206_eye.0001');
+
+To plot any of these files:
+tms2 = 0:1:2000;
+plot(tms2(1:points),data(1,:))
+
+Sorter Files
+DAT files and HDR files are named 0002.dat, 0002.hdr and 0003.dat, 0003.hdr. They 
+correspond to Channels 1 and 2 respectively.
+
+To look at waveforms (make sure you are in the sort directory):
+a05020206wave1 = waveforms('0002')
+InspectGUI(a05020206wave1)
+a05020206wave2 = waveforms('0003')
+InspectGUI(a05020206wave2)
+
+To create interleaved spike trains (make sure you are in the sort directory):
+a05020206g1 = ispikes('0002',1,0);
+a05020206g2 = ispikes('0003',1,0);
+
+To inspect inteleaved spike trains (make sure you are in the highpass directory):
+InspectGUI(a05020206g1)
+InspectGUI(a05020206g2)
+
+To inspect streamer files:
+broadband  (make sure you are in the raw directory)
+a05020206bb1 = streamer('annie05020206',4);
+InspectGUI(a05020206bb1)
+a05020206bb2 = streamer('annie05020206',5);
+InspectGUI(a05020206bb2)
+
+lfp (make sure you are in the lfp directory)
+a05020206lfp1 = streamer('annie05020206_lfp',1);
+InspectGUI(a05020206lfp1)
+a05020206lfp2 = streamer('annie05020206_lfp',2);
+InspectGUI(a05020206lfp2)
+
+highpass (make sure you are in the highpass directory)
+a05020206hp1 = streamer('annie05020206_highpass',1);
+InspectGUI(a05020206hp1)
+a05020206hp2 = streamer('annie05020206_highpass',2);
+InspectGUI(a05020206hp2)
+
+Stimulus Sequence
+
+This is a sample sequence from the ini file:
+
+0=120
+1=72
+2=24
+3=144
+4=48
+5=0
+6=96
+
+This means that on trial 1, stimulus 120 (0-indexed) was used, followed by stimulus 
+72 on trial 2, etc. There were 24 stimuli for each salience condition. The mapping 
+from stimulus sequence to salience values are as follows:
+
+0  : 23 - Ori jitter 0 deg at target location (where the cells were part of the contour)
+24 : 47 - Ori jitter 15 deg at target location
+48 : 71 - Ori jitter 30 deg at target location
+72 : 95 - Ori jitter 0 deg at control location (where the contour was away from the cells)
+96 :119 - Ori jitter 15 deg at control location
+120:143 - Ori jitter 30 deg at control location
+144:155 - Catch trials at target location
+156:167 - Catch trials at control location
+
+The conversion from stimulus to trial number is given by:
+a05020206sesinfo = sesinfo('annie05020206');
+a05020206sesinfo.sequence.contour(1).stimulus(1).repetition
+ans =
+	6	174
+	
+This means that stimulus 1 was used in annie05020206.0006 and annie05020206.0174.
+
+To look at reaction times as a function of salience:
+a05020206markers = markers(a05020206sesinfo)
+plot(a05020206markers,'contour','nocatch')
+
+This function plots the reaction times for the trials at the target location, without 
+the reaction times for the catch trials at the target location. To get help on this 
+function do: help markers/plot. 
+
+You can also do:
+plot(a05020206markers,'control','catch')
+
+This will plot the reaction times for the trials at the control location, including the
+catch trials.
+
+To look at psychometric performance:
+a05020206perf = performance(a05020206markers)
+plot(a05020206perf,a05020206sesinfo.stim_p,5)
+
+To get help on this function do: help performance/plot.
+
+To look at results for a particular stimulus, do:
+a05020206perf.session(1).contour(1).result'
+
+The results are arranged in the following order:
+stimulus 1 repetition 1
+stimulus 1 repetition 2
+stimulus 2 repetition 1
+stimulus 2 repetition 2
+...
+
