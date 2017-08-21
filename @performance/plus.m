@@ -62,7 +62,13 @@ else
 	p.session((p.sessions+1):(p.sessions+q.sessions)) = q.session(:);
 	p.sessions = p.sessions + q.sessions;
 	% update Number field in parent object nptdata
-	p = set(p,'Number',p.sessions);
+	% p = set(p,'Number',p.sessions);
+	% update SessionDirs field in parent object nptdata, which will also update the Number field
+	pd = get(p,'SessionDirs');
+	qd = get(q,'SessionDirs');
+	p = set(p,'SessionDirs',{pd{:} qd{:}});
+
+
 	
 	p.contourresults = p.contourresults + q.contourresults;
 	
